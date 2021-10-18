@@ -9,7 +9,7 @@ amethyst = {version = "0.15.2", features = ["no-slow-safety-checks"]}
 log = { version = "0.4.8", features = ["serde"] }
 
 [features]
-default = ["vulkan"]
+default = ["metal"]
 empty = ["amethyst/empty"]
 metal = ["amethyst/metal"]
 vulkan = ["amethyst/vulkan"]
