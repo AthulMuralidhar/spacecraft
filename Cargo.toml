@@ -5,11 +5,25 @@ authors = ["Hilmar Wiegand <me@hwgnd.de>", "Amethyst Foundation <contact@amethys
 edition = "2018"
 
 [dependencies]
-amethyst = {version = "0.15.2", features = ["no-slow-safety-checks"]}
+amethyst = "0.15.3"
 log = { version = "0.4.8", features = ["serde"] }
+serde = "^1"
+derivative = "^2"
+lazy_static = "^1.4"
+serde-diff = "0.4"
+type-uuid = "0.1"
+glsl-layout = "0.4"
+ron = "^0.6"
+legion-prefab = { git = "https://github.com/amethyst/prefab", rev = "49ba008a3b398033725726c641b96cd48b5a1080" }
+prefab-format = { git = "https://github.com/amethyst/prefab", rev = "49ba008a3b398033725726c641b96cd48b5a1080" }
 
 [features]
 default = ["metal"]
 empty = ["amethyst/empty"]
 metal = ["amethyst/metal"]
 vulkan = ["amethyst/vulkan"]
+
+[dev-dependencies]
+clippy = "0.0.302"
+
+
