@@ -1,0 +1,5 @@
+- code as nft
+- each push to the repo genrates coins and for users to use them, they have to "obtain" these coins somehow
+- in essence the worth of the coin is determined by how much the code or the repo is being used and how frewuently its being maintained: an unmaintained codebase will have few of its coins to begin with and if its not used will not be worth anything
+- but a haigly maintained widely used repo / codebase the worth of which will be equivalent to 1usd per coin / download of the code 
+- there is also the fact that there will not be any incentive for maintainers to maintain the repo (thereby increasing the scaricity of the coin) but then the value (downloads) rate will go down due to the bugginess inherint in software
