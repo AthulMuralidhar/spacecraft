@@ -1,9 +1,12 @@
-#[allow(unused_imports)]
+#![allow(unused_imports)]
+#![allow(dead_code)]
 
 use bevy::prelude::*;
-// use bevy::render::pass::ClearColor;
 
 // https://bevy-cheatbook.github.io/programming/app-builder.html
+
+mod constants;
+use constants::Materials;
 
 fn main() {
     App::new()
