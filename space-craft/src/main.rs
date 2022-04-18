@@ -7,6 +7,8 @@
 // https://sunjay.dev/learn-game-dev/single-sprite.html
 // https://sunjay.dev/learn-game-dev/refactor-player-struct.html
 // https://sunjay.dev/learn-game-dev/simple-movement.html
+// TODO: complete the series
+
 
 use sdl2::pixels::Color;
 use sdl2::event::Event;
