@@ -20,18 +20,6 @@ import (
 
 
 func Protocol() {
-	// engine, err := Engine()
-
-	// TODO:
-	// convert python reference implementation into go
-
-
-
-	
-	// make this func as the entry function for that module
-	// enjoy
-
-
 	// Ordinarily the private key would come from whatever storage mechanism
 	// is being used, but for this example just hard code it.
 	privKeyBytes, err := hex.DecodeString("22a47fa09a223f2aa079edf85a7c2" +
