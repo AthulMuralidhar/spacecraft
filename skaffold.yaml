@@ -1,0 +1,18 @@
+apiVersion: skaffold/v2beta28
+kind: Config
+metadata:
+  name: spacecraft
+build:
+  artifacts:
+  - image: gyro
+    context: gyro
+    buildpacks:
+      builder: gcr.io/buildpacks/builder:v1
+deploy:
+  kubectl:
+    manifests:
+    - gyro/deployment.yaml
+portForward:
+- resourceType: service
+  resourceName: gyro
+  port: 8080
