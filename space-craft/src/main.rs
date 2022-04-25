@@ -21,11 +21,39 @@ use sdl2::render::Texture;
 use sdl2::rect::Rect;
 use sdl2::rect::Point;
 
+const PLAYER_CONST_SPEED: i32 = 20;
+
+#[derive(Copy, Clone, Debug)]
+enum Direction {
+    Up,
+    Down,
+    Right,
+    Left,
+}
+
 
 struct Player {
     position: Point,
     sprite: Rect,
     speed: i32,
+    direction: Direction,
+}
+
+fn update_player(player: &mut Player) {
+    match player.direction {
+        Direction::Up => {
+            player.position.offset(0, -player.speed);
+        },
+        Direction::Down => {
+            player.position.offset(0, player.speed);
+        },
+        Direction::Right => {
+            player.position.offset( player.speed, 0);
+        },
+        Direction::Left => {
+            player.position.offset( -player.speed, 0);
+        },
+    }
 }
 
 
@@ -75,14 +103,13 @@ fn main() -> Result<(), String> {
         sprite: Rect::new(0,0,26,36),
         // 0-10,
         speed: 5,
+        direction: Direction::Right,
     };
 
     // main game loop
     let mut event_pump = sdl_context.event_pump()?;
     let mut i = 0;
     'running: loop {
-        // canvas.set_draw_color(Color::RGB(i, 64, 255 - i));
-        // canvas.clear();
         for event in event_pump.poll_iter() {
             // A nuanced thing about this is that we're handling all the queued events at once. 
             // ie. parallelly processed
@@ -93,23 +120,35 @@ fn main() -> Result<(), String> {
                 },
                 Event::KeyDown {keycode: Some(Keycode::Left), ..} => {
                     // move from centre
+                    player.speed = PLAYER_CONST_SPEED;
                     player.position = player.position.offset(-player.speed,0);
 
                 },
                 Event::KeyDown { keycode: Some(Keycode::Right), .. } => {
+                    player.speed = PLAYER_CONST_SPEED;
                     player.position = player.position.offset(player.speed, 0);
                 },
                 Event::KeyDown { keycode: Some(Keycode::Up), .. } => {
+                    player.speed = PLAYER_CONST_SPEED;
                     player.position = player.position.offset(0, -player.speed);
                 },
                 Event::KeyDown { keycode: Some(Keycode::Down), .. } => {
+                    player.speed = PLAYER_CONST_SPEED;
                     player.position = player.position.offset(0, player.speed);
                 },
+
+                Event::KeyUp {keycode: Some(Keycode::Left),  repeat: false, ..} |
+                Event::KeyUp {keycode: Some(Keycode::Right),  repeat: false, ..} |
+                Event::KeyUp {keycode: Some(Keycode::Up), repeat: false, ..} |
+                Event::KeyUp {keycode: Some(Keycode::Left),  repeat: false, ..} => {
+                    player.speed = 0;
+                }
                 _ => {}
             }
         }
         // the update
         i = (i + 1) % 255;
+        update_player(&mut player);
 
         // the renderr
         render( &mut canvas, Color::RGB(i, 255, 255 - i), &texture, &player)?;
