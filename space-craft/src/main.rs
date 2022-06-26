@@ -1,27 +1,45 @@
-use sdl2::VideoSubsystem;
-
 /*
-The project closely follows https://sunjay.dev/learn-game-dev/intro.html
+rust is proving to be very difficult indeed
+so the plan now is to slowly move to a 3d open world called plantex and port it, file by file
+adding tests and general improvements. i am finding it easier to stand / use already developed
+stuff rather than building everything from scratch
 
-Extras needed to run on linux:
-- sudo apt-get install libsdl2-dev
+main repo here: https://github.com/OsnaCS/plantex
 */
+mod support;
 
-fn init_game_window() -> Result<VideoSubsystem, String> {
-    let video_subsystem = sdl2::init()?.video();
-    return video_subsystem;
-}
+use glutin::event::{Event, WindowEvent};
+use glutin::event_loop::{ControlFlow, EventLoop};
+use glutin::window::WindowBuilder;
+use glutin::ContextBuilder;
+
 fn main() {
-    init_game_window().ok();
-}
+    let el = EventLoop::new();
+    let wb = WindowBuilder::new().with_title("A fantastic window!");
 
-//  TESTS
-#[cfg(test)]
-mod tests {
-    use crate::init_game_window;
+    let windowed_context = ContextBuilder::new().build_windowed(wb, &el).unwrap();
+    let windowed_context = unsafe { windowed_context.make_current().unwrap() };
 
-    #[test]
-    fn it_renders_the_window() {
-        assert!(init_game_window().is_ok())
-    }
+    println!("Pixel format of the window's GL context: {:?}", windowed_context.get_pixel_format());
+
+    let gl = support::load(windowed_context.context());
+
+    el.run(move |event, _, control_flow| {
+        println!("{:?}", event);
+        *control_flow = ControlFlow::Wait;
+
+        match event {
+            Event::LoopDestroyed => (),
+            Event::WindowEvent { event, .. } => match event {
+                WindowEvent::Resized(physical_size) => windowed_context.resize(physical_size),
+                WindowEvent::CloseRequested => *control_flow = ControlFlow::Exit,
+                _ => (),
+            },
+            Event::RedrawRequested(_) => {
+                gl.draw_frame([1.0, 0.5, 0.7, 1.0]);
+                windowed_context.swap_buffers().unwrap();
+            }
+            _ => (),
+        }
+    });
 }
