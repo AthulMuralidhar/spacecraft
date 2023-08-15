@@ -1,16 +1,19 @@
-# spacecraft
+# Spacecraft
 
 An open source web3 based solution to get humanity to space
 more info here: https://github.com/AthulMuralidhar/spacecraft/wiki/Vision
 
-# structure
+# Structure
 
-## Gyro
+## Ground Control
 this is the newtwork part of the project. this code handles the decentralised distributed organisation of the whole project. tokenisatoin and fungibility are also added here
+- the landing page for the project
+- the infrastructure
+- onboarding should be done here as well
+- API integrations between Core to the public lives here
 
-## Adam
+## Core
 this is the IoT part of the project. this is where the actuators code live, the aim is to have this as a root and put all the software related to actual servo movements here
-
-## Spacecraft
-
-this is the maingame itself which will be the user facing side. players will interract directly with this part
+- the embedded rust core for flashing code into the satellite
+- every subproject must be a single small binary
+- performance and security are critical here
