@@ -1,0 +1,2 @@
+- this is the tiny go tryout for space core
+- i enjoy programming in go so why not just use go instead of rust  for fast dev?
