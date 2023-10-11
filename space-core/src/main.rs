@@ -6,7 +6,10 @@ fn main() {
     // TODO: get the current orientation wrt onboard accelerometer
 
 
-    // maybe i should use this one https://www.st.com/resource/en/datasheet/asm330lhh.pdf
 
-    
+    // this is the board: https://www.st.com/en/evaluation-tools/stm32f4discovery.html
+    // here is the crate: https://github.com/stm32-rs/stm32f407g-disc
+
+
+
 }
