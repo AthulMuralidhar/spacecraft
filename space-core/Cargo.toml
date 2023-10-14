@@ -6,4 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-rtt-target = "0.4.0"
+cortex-m = "0.7.2"
+cortex-m-rt = { version = "0.6.13", features = ["device"] }
+panic-halt = "0.2.0"
+stm32f3xx-hal = { version = "0.6.1", features = ["rt", "stm32f303xc"] }
