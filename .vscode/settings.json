@@ -1,0 +1,5 @@
+{
+    "rust-analyzer.linkedProjects": [
+        "./space-core/generated/generated/Cargo.toml"
+    ]
+}
