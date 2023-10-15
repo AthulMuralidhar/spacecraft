@@ -1,0 +1,12 @@
+[default.general]
+chip = "nrf52833_xxAA"
+
+[default.reset]
+halt_afterwards = true
+
+[default.rtt]
+# this is the protocol through which a chip can send text to a debugger
+enabled = false
+
+[default.gdb]
+enabled = true 
