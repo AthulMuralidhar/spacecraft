@@ -1,4 +1,4 @@
-/home/athul/spacecraftpackage com.example.myapplication
+///home/athul/spacecraftpackage com.example.myapplication
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,6 +11,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.myapplication.ui.theme.MyApplicationTheme
+
+
+
+// TODO: this is what is needed to build the video streaming app
+// https://developer.android.com/codelabs/exoplayer-intro?hl=en#1
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
